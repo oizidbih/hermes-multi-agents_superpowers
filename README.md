@@ -9,8 +9,9 @@ Superpowers is a complete software development methodology for your coding agent
 Give your herems-agents Superpowers
 
 ## How it works
+Skills with role-gate callouts at their entry points:
+<img width="1472" height="1622" alt="image" src="https://github.com/user-attachments/assets/c37ae7dd-194f-4b74-bc70-6cee36df8ea2" />
 
-to be updated
 
 
 
@@ -32,11 +33,16 @@ to be updated
 
 **The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.
 
+
 ## What's changed
+
+**New skill**
+role-boundaries — a constitutional layer that sits above every other skill. Any agent declares its role at session start, and the skill enforces three things: what it may do, what it's forbidden from doing, and what triggers a handoff with a structured artifact.
 
 **brainstorming**
 New flow and split responsibility between agents:
 <img width="1960" height="2560" alt="brainstorming_multi-agent-workflow" src="https://github.com/user-attachments/assets/e4d26f4c-2fc8-411b-a733-5c489e8f0298" />
+
 
 
 ## License
