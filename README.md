@@ -12,7 +12,6 @@ Give your herems-agents Superpowers
 
 to be updated
 
-<img width="1960" height="2560" alt="brainstorming_multi-agent-workflow" src="https://github.com/user-attachments/assets/e4d26f4c-2fc8-411b-a733-5c489e8f0298" />
 
 
 ## The Basic Workflow
@@ -36,6 +35,8 @@ to be updated
 ## What's changed
 
 **brainstorming**
+New flow and split responsibility between agents:
+<img width="1960" height="2560" alt="brainstorming_multi-agent-workflow" src="https://github.com/user-attachments/assets/e4d26f4c-2fc8-411b-a733-5c489e8f0298" />
 
 
 ## License
