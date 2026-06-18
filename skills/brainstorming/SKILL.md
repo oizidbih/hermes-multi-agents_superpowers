@@ -1,9 +1,9 @@
 ---
-name: brainstorming-Multi-Agent
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. Includes explicit agent invocation and handoff protocols at each step."
+name: PRD-Multi-Agent
+description: You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. Includes explicit agent invocation and handoff protocols at each step.
 ---
 
-# Brainstorming Ideas Into Designs (Multi-Agent)
+# Brainstorming Ideas Into PRDs (Multi-Agent)
 
 Help turn ideas into fully formed designs and specs through natural collaborative dialogue, with each agent contributing only within its role and passing a structured handoff payload to the next.
 
@@ -58,7 +58,7 @@ You MUST create a task for each of these items and complete them in order:
 4. **[PM → Architect] Invoke Architect for architecture approaches**
 4b. **[PM → Designer] Invoke UI/UX Designer for visual/UX approaches** (if applicable)
 5. **[PM] Present unified design** — consolidate inputs, get user approval per section
-6. **[PM] Write design doc** — save to `~/ai-delivery-org-docs/wiki/product/specs/YYYY-MM-DD-<topic>-design.md` and commit
+6. **[PM] Write prd doc** — save to `~/ai-delivery-org-docs/wiki/product/specs/YYYY-MM-DD-<topic>-prd.md` and commit
 7. **[PM] Spec self-review** — quick inline check
 7a. **[PM → Architect] Architect reviews architecture section**
 7b. **[PM → Designer] Designer reviews UX section** (if applicable)
@@ -71,7 +71,7 @@ You MUST create a task for each of these items and complete them in order:
 ## Process Flow
 
 ```dot
-digraph brainstorming_multi_agents {
+digraph prd_multi_agents {
     rankdir=TB;
 
     // Steps
@@ -83,9 +83,9 @@ digraph brainstorming_multi_agents {
     "4a. [PM→Arch] Invoke Architect agent" [shape=box style=filled fillcolor="#d0ebff"];
     "UX questions reached?" [shape=diamond];
     "4b. [PM→Designer] Invoke Designer agent" [shape=box style=filled fillcolor="#f8f0fc"];
-    "5. [PM] Present unified design" [shape=box];
-    "User approves design?" [shape=diamond];
-    "6. [PM] Write design doc" [shape=box];
+    "5. [PM] Present unified prd" [shape=box];
+    "User approves prd?" [shape=diamond];
+    "6. [PM] Write prd doc" [shape=box];
     "7. [PM] Spec self-review" [shape=box];
     "7a. [PM→Arch] Architect reviews arch section" [shape=box style=filled fillcolor="#d0ebff"];
     "7b. [PM→Designer] Designer reviews UX section" [shape=box style=filled fillcolor="#f8f0fc"];
@@ -102,22 +102,21 @@ digraph brainstorming_multi_agents {
     "Architecture questions reached?" -> "UX questions reached?" [label="no"];
     "4a. [PM→Arch] Invoke Architect agent" -> "UX questions reached?";
     "UX questions reached?" -> "4b. [PM→Designer] Invoke Designer agent" [label="yes"];
-    "UX questions reached?" -> "5. [PM] Present unified design" [label="no"];
-    "4b. [PM→Designer] Invoke Designer agent" -> "5. [PM] Present unified design";
-    "5. [PM] Present unified design" -> "User approves design?";
-    "User approves design?" -> "5. [PM] Present unified design" [label="no, revise"];
-    "User approves design?" -> "6. [PM] Write design doc" [label="yes"];
-    "6. [PM] Write design doc" -> "7. [PM] Spec self-review";
+    "UX questions reached?" -> "5. [PM] Present unified prd" [label="no"];
+    "4b. [PM→Designer] Invoke Designer agent" -> "5. [PM] Present unified prd";
+    "5. [PM] Present unified prd" -> "User approves prd?";
+    "User approves prd?" -> "5. [PM] Present unified prd" [label="no, revise"];
+    "User approves prd?" -> "6. [PM] Write prd doc" [label="yes"];
+    "6. [PM] Write prd doc" -> "7. [PM] Spec self-review";
     "7. [PM] Spec self-review" -> "7a. [PM→Arch] Architect reviews arch section";
     "7a. [PM→Arch] Architect reviews arch section" -> "7b. [PM→Designer] Designer reviews UX section";
     "7b. [PM→Designer] Designer reviews UX section" -> "7c. [PM→Security] Security reviews posture";
     "7c. [PM→Security] Security reviews posture" -> "8. [PM] User reviews spec";
-    "8. [PM] User reviews spec" -> "6. [PM] Write design doc" [label="changes requested"];
+    "8. [PM] User reviews spec" -> "6. [PM] Write prd doc" [label="changes requested"];
     "8. [PM] User reviews spec" -> "9. [PM→writing-plans] Invoke writing-plans + handoff" [label="approved"];
 }
 ```
 
-**The terminal state is invoking writing-plans with a full handoff payload.** Do NOT invoke frontend-design, mcp-builder, or any other implementation skill. The ONLY skill you invoke after brainstorming is writing-plans.
 
 ---
 
@@ -134,7 +133,7 @@ digraph brainstorming_multi_agents {
 
 1. **Project directory conventions** — Establish where code lives. Check for a project-level AGENTS.md for directory conventions, or ask the user. Common pattern: `/root/ai-delivery-org-code/internal-tools/` for team-internal tools, `/root/ai-delivery-org-code/` for runtime products, with a subfolder per project.
 2. **Existing code scaffolds/repos** — Check for prior work in the project directory. Look for apps, components, data contracts, types, tests, sample fixtures — these may be salvageable even if the user plans to rebuild from scratch. Note what can be reused (type definitions, data contracts, component APIs, UX patterns).
-3. **Existing design docs** — `~/ai-delivery-org-docs/wiki/product/specs/`
+3. **Existing prd docs** — `~/ai-delivery-org-docs/wiki/product/specs/`
 4. **CLAUDE.md / AGENTS.md** — project-level agent instructions (check the project root and `.hermes/` directory)
 5. **Recent git log** — what changed recently
 6. **Open tickets / ADRs** — decisions in flight
@@ -216,7 +215,7 @@ Deliverable: Return a structured response with:
 - Draft architecture section text (ready to paste into spec)
 - Open questions requiring PM/user input
 
-**PM agent:** Incorporates Architect output into the design. If the Architect raised open questions, PM asks the user before locking the architecture section. Proceed to Step 4b if UX applies, else Step 5.
+**PM agent:** Incorporates Architect output into the prd. If the Architect raised open questions, PM asks the user before locking the architecture section. Proceed to Step 4b if UX applies, else Step 5.
 
 > 📋 **Hermes:** Wait for `t_arch_approaches` status = `done` before continuing.  
 > `pm kanban list --assignee architect --status todo,ready,running` should be empty.
@@ -276,10 +275,10 @@ Deliverable: Return a structured response with:
 
 ---
 
-### Step 5 — [PM Agent] Present Unified Design
+### Step 5 — [PM Agent] Present Unified prd
 
 **Actor:** PM agent  
-**Action:** Consolidate Architect and Designer inputs (plus PM's own scope/requirements work) into a unified design, then present it to the user section by section.
+**Action:** Consolidate Architect and Designer inputs (plus PM's own scope/requirements work) into a unified prd, then present it to the user section by section.
 
 Present in this order:
 1. Goals and success criteria (PM owns)
@@ -300,13 +299,13 @@ Do not proceed to Step 6 until the user has approved all sections.
 
 ---
 
-### Step 6 — [PM Agent] Write Design Document
+### Step 6 — [PM Agent] Write prd Document
 
 **Actor:** PM agent  
-**Action:** Write the validated design to:
+**Action:** Write the validated prd to:
 
 ```
-~/ai-delivery-org-docs/wiki/product/specs/YYYY-MM-DD-<topic>-design.md
+~/ai-delivery-org-docs/wiki/product/specs/YYYY-MM-DD-<topic>-prd.md
 ```
 
 (User preferences for spec location override this default.)
@@ -314,7 +313,7 @@ Do not proceed to Step 6 until the user has approved all sections.
 The spec document MUST include these sections, attributed to the contributing agent:
 
 ```markdown
-# [Feature Name] Design
+# [Feature Name] prd
 
 ## Goals & Success Criteria
 <!-- Authored by: PM agent -->
