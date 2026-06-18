@@ -489,7 +489,7 @@ Wait for user response.
 
 ---
 
-#### Handoff A: PM → writing-plans skill
+#### Handoff A: PM → [[under review/writing-plans/SKILL|SKILL]]writing-plans skill
 
 ```
 HANDOFF: PM → writing-plans skill
@@ -612,22 +612,13 @@ No action required now. You will be explicitly invoked at the right implementati
 
 ---
 
-## After the Handoffs
+## After the [[role-boundaries/SKILL|SKILL]]
+Handoffs
 
 Once all handoff payloads are sent, the PM agent's role in the brainstorming phase is complete. The PM agent does not participate in implementation tasks unless:
 - A scope change is requested (re-enter Step 3)
 - An Open Question from the spec needs resolution
 - A task is proposed that falls outside the approved spec
-
----
-
-## Reference Examples
-
-Session-specific worked examples live under `references/` in this skill directory:
-
-- `references/token-dashboard-session-2026-06.md` — NawaahOS internal LLM token usage dashboard: scrapped-scaffold reuse, directory/GitHub conventions, real data vs synthetic, architecture handoff payload format.
-
-Read these before starting a new brainstorming session to see how previous sessions handled similar decisions.
 
 ---
 
