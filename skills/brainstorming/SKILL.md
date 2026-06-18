@@ -489,7 +489,7 @@ Wait for user response.
 
 ---
 
-#### Handoff A: PM → [[under review/writing-plans/SKILL|SKILL]]writing-plans skill
+#### Handoff A: PM → [[writing-plans/SKILL|SKILL]] writing-plans skill
 
 ```
 HANDOFF: PM → writing-plans skill
